@@ -28,26 +28,26 @@ echo "My friends: ";
 print_r($friends);
 
 // Send snap adding text to your image and 10 seconds
-$snapchat->send($imagePath, $sendTo, "this is a test :D", 10);
+// $snapchat->send($imagePath, $sendTo, "this is a test :D", 10);
 
 // Set a story
 // $snapchat->setStory($imagePath);
 
 // Set a story adding text to the image and 5 seconds
-$snapchat->setStory($imagePath, 5, "This is my story");
+// $snapchat->setStory($imagePath, 5, "This is my story");
 
 
 // Get snaps data (Without storing them)
 //$snapchat->getSnaps();
 
 // Automatically downloads Snaps and store it in 'Snaps' folder
-$snapchat->getSnaps(true);
+// $snapchat->getSnaps(true);
 
 // Download stories for a specific username
-$snapchat->getStoriesByUsername("homie", true);
+// $snapchat->getStoriesByUsername("homie", true);
 
 // Send chat message to "username"
-$snapchat->sendMessage("username", "hello from Snap-API!");
+$snapchat->sendMessage("sugar_caine", "hello from Snap-API!");
 
 $snapchat->closeAppEvent();
 
