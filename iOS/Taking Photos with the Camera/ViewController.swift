@@ -2,6 +2,8 @@ import UIKit
 import MobileCoreServices
 import Alamofire
 
+var image1string : String = String()
+
 class ViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   
@@ -44,20 +46,17 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 print("Image = \(theImage)")
                 var imageData = UIImageJPEGRepresentation(theImage, 0.9)
                 var base64String = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
+                image1string = base64String
                 print(base64String)
                 
+//                let parameters = [
+//                    "sendFrom": "niraj",
+//                    "sendTo": "yasha",
+//                    "image_left": base64String,
+//                    "image_right": base64String
+//                ]
                 
-                let parameters = [
-                    "sendFrom": "niraj",
-                    "sendTo": "yasha",
-                    "image_left": base64String,
-                    "image_right": base64String
-                ]
-                
-                // image_left
-                // image_right
-                
-                Alamofire.request(.POST, "https://4c576b5e.ngrok.com/send", parameters: parameters)
+//                Alamofire.request(.POST, "https://4c576b5e.ngrok.com/send", parameters: parameters)
                 
               }
             }

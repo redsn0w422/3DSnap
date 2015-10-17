@@ -49,13 +49,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                 let parameters = [
                                     "sendFrom": "niraj",
                                     "sendTo": "yasha",
-                                    "image_left": base64String,
+                                    "image_left": image1string,
                                     "image_right": base64String
                                 ]
-                                
-                                // image_left
-                                // image_right
-                                
                                 Alamofire.request(.POST, "https://4c576b5e.ngrok.com/send", parameters: parameters)
                                 
                             }
@@ -66,9 +62,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             }
             
             //      picker.dismissViewControllerAnimated(true, completion: nil)
-            picker.dismissViewControllerAnimated(true) { () -> Void in
-                self.performSegueWithIdentifier("secondVC", sender: nil)
-            }
+//            picker.dismissViewControllerAnimated(true) { () -> Void in
+//                self.performSegueWithIdentifier("secondVC", sender: nil)
+//            }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -127,10 +123,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 theController.delegate = self
                 
                 presentViewController(theController, animated: true, completion: nil)
-                
-                let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("secondVC")
-                self.showViewController(vc as! UIViewController, sender: vc)
-                
             }
             
         } else {
