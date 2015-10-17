@@ -45,7 +45,7 @@ needs a base64 image and username of the sender.
 */
 app.post('/send', function(req, res, next)
 {
-  console.log(req.body);
+  // console.log(req.body);
   var sendFrom = req.body.sendFrom;
   var sendTo = req.body.sendTo;
   // img is base64 image
@@ -56,7 +56,7 @@ app.post('/send', function(req, res, next)
   var link_right = "";
 
   done = function(){
-    console.log("entered done");
+    // console.log("entered done");
     data[sendTo] = {
       "from":sendFrom,
       "image_left":link_left,
@@ -158,10 +158,10 @@ app.post('/get', function(req, res, next){
 
   var link = data[username];
   var ret = "No snapchats found :(";
-  if (link !== null)
+  if (link != null)
   {
-    ret = JSON.stringify(link);
-    // delete data[username];
+    ret = link;
+    delete data[username];
   }
   res.send(ret);
   res.end();
