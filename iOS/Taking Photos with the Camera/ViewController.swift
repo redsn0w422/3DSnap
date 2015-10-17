@@ -10,11 +10,13 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   display the camera view */
   var beenHereBefore = false
   var controller: UIImagePickerController?
+  var count = 0
   
   func imagePickerController(picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [String: AnyObject]){
       
       print("Picker returned successfully")
+
       
       let mediaType:AnyObject? = info[UIImagePickerControllerMediaType]
       
@@ -48,7 +50,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 let parameters = [
                     "sendFrom": "niraj",
                     "sendTo": "yasha",
-                    "image": base64String
+                    "image_left": base64String,
+                    "image_right": base64String
                 ]
                 
                 // image_left
@@ -63,7 +66,10 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         }
       }
       
-      picker.dismissViewControllerAnimated(true, completion: nil)
+//      picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismissViewControllerAnimated(true) { () -> Void in
+            self.performSegueWithIdentifier("secondVC", sender: nil)
+        }
   }
   
   func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -109,7 +115,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     if isCameraAvailable() && doesCameraSupportTakingPhotos(){
-      
+      count++
+      print(count)
       controller = UIImagePickerController()
       
       if let theController = controller{
@@ -121,23 +128,16 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         theController.delegate = self
         
         presentViewController(theController, animated: true, completion: nil)
+
+        let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("secondVC")
+        self.showViewController(vc as! UIViewController, sender: vc)
+        
       }
       
     } else {
       print("Camera is not available")
     }
   }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if (segue.identifier == "segueTest") {
-            var svc = segue!.destinationViewController as! SecondPictureViewController;
-            
-            svc.toPass = textField.text
-            
-        }
-    }
-  
   
 }
 
