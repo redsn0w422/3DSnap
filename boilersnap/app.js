@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var request = require('request');
+var XMLHttpRequest = require('xhr2');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -17,13 +19,120 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+console.log('hey');
+
+/**
+json to hold user and image associated with that user
+key is username;
+values are the link to the image they need to get
+and the username of the person who sent it
+*/
+
+var data = {};
+
+/**
+post request for sending snapchats
+takes in json
+needs a base64 image and username of the sender.
+*/
+app.post('/send', function(req, res, next)
+{
+  console.log(req.body);
+  var sendFrom = req.body.sendFrom;
+  var sendTo = req.body.sendTo;
+  // img is base64 image
+  var img = req.body.image;
+
+  request({
+    url: "https://api.imgur.com/3/upload",
+    method: "POST",
+    json: true,
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"Client-ID f948415a877272b"
+    },
+    body: {image: img}
+  }, function(err, response, body){
+    console.log(response.body.data);
+    data[sendTo] = {
+      "from":sendFrom,
+      "image":response.body.data.link
+    };
+    console.log("DATA:");
+    console.log(data);
+    res.send(response.body.data.link);
+    res.end();
+  });
+
+
+  /**
+  var Request = new XMLHttpRequest();
+
+  Request.open('POST', 'https://api.imgur.com/3/upload');
+
+  Request.setRequestHeader('Authorization', 'Client-ID f948415a877272b');
+  Request.setRequestHeader('Content-Type', 'application/json');
+
+  var link = "";
+
+  Request.onreadystatechange = function () {
+    console.log('entered request function');
+    if (this.readyState === 4) {
+      console.log('Status:', this.status);
+      console.log('Headers:', this.getAllResponseHeaders());
+      console.log('Body:', this.responseText);
+    }
+    console.log(this.responseText);
+    link = unescape(JSON.parse(this.responseText).data.link);
+    console.log("IMAGE LINK: " + link);
+    data[sendTo] = {
+      "from":sendFrom,
+      "image":link
+    };
+    console.log(data);
+  };
+
+
+  var body = {
+    'image': img
+  };
+
+  Request.send(JSON.stringify(body));
+  */
+  // console.log(data);
+  // res.send('done!');
+  // res.end();
+});
+
+/**
+post request for recieving snapchats
+takes in json
+needs the username of the user to check for
+*/
+app.post('/get', function(req, res, next){
+  console.log(req.body);
+  console.log(data);
+  var username = req.body.username;
+
+  var link = data[username];
+  var ret = "No snapchats found :(";
+  if (link !== null)
+  {
+    ret = JSON.stringify(link);
+    // delete data[username];
+  }
+  res.send(ret);
+  res.end();
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,5 +165,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.listen(3000);
 
 module.exports = app;
