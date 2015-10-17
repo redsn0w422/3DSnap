@@ -13,8 +13,8 @@ $debug = true; // Set this to true if you want to see all outgoing requests and 
 ////////////////////////////////
 
 
-$imagePath = "small.jpg"; // URL or local path to a media file (image or video)
-$sendTo = array("nirajpant7");
+$imagePath = ""; // URL or local path to a media file (image or video)
+$sendTo = array();
 
 $snapchat = new Snapchat($username, $gEmail, $gPasswd, $casperKey, $casperSecret, $debug);
 
@@ -28,7 +28,7 @@ echo "My friends: ";
 print_r($friends);
 
 // Send snap adding text to your image and 10 seconds
-$snapchat->send($imagePath, $sendTo, "this is a test :D", 10);
+// $snapchat->send($imagePath, $sendTo, "this is a test :D", 10);
 
 // Set a story
 // $snapchat->setStory($imagePath);
@@ -47,7 +47,7 @@ $snapchat->send($imagePath, $sendTo, "this is a test :D", 10);
 // $snapchat->getStoriesByUsername("homie", true);
 
 // Send chat message to "username"
-// $snapchat->sendMessage("nirajpant7", "hello from Snap-API!");
+$snapchat->sendMessage("redsn0w422", "hello from Snap-API!");
 
 $snapchat->closeAppEvent();
 

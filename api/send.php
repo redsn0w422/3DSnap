@@ -58,7 +58,7 @@ echo $friends;
 // $snapchat->getStoriesByUsername("homie", true);
 
 // Send chat message to "username"
-// $snapchat->sendMessage("sugar_caine", "hello from Snap-API!");
+// $snapchat->sendMessage("redsn0w422", "hello from Snap-API!");
 
 $snapchat->closeAppEvent();
 
