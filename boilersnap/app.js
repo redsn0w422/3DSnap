@@ -49,7 +49,42 @@ app.post('/send', function(req, res, next)
   var sendFrom = req.body.sendFrom;
   var sendTo = req.body.sendTo;
   // img is base64 image
-  var img = req.body.image;
+  var img_left = req.body.image_left;
+  var img_right = req.body.image_right;
+
+  var link_left = "";
+  var link_right = "";
+
+  done = function(){
+    console.log("entered done");
+    data[sendTo] = {
+      "from":sendFrom,
+      "image_left":link_left,
+      "image_right":link_right
+    };
+    console.log("DATA:");
+    console.log(data);
+    res.send(link_left + "\n" + link_right);
+    res.end();
+  }
+
+  req2 = function(){
+    request({
+      url: "https://api.imgur.com/3/upload",
+      method: "POST",
+      json: true,
+      headers: {
+        "Content-Type":"application/json",
+        "Authorization":"Client-ID f948415a877272b"
+      },
+      body: {image: img_right}
+    }, function(err, response, body){
+      console.log("entered second request");
+      link_right = response.body.data.link;
+      console.log("right: " + link_right);
+      done();
+    });
+  }
 
   request({
     url: "https://api.imgur.com/3/upload",
@@ -59,18 +94,17 @@ app.post('/send', function(req, res, next)
       "Content-Type":"application/json",
       "Authorization":"Client-ID f948415a877272b"
     },
-    body: {image: img}
+    body: {image: img_left}
   }, function(err, response, body){
-    console.log(response.body.data);
-    data[sendTo] = {
-      "from":sendFrom,
-      "image":response.body.data.link
-    };
-    console.log("DATA:");
-    console.log(data);
-    res.send(response.body.data.link);
-    res.end();
+    console.log("entered first request");
+    link_left = response.body.data.link;
+    console.log("left: " + link_left)
+    req2();
   });
+
+
+
+
 
 
   /**
