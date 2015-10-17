@@ -95,10 +95,10 @@
 			children = (
 				9DA89D75196EDA430055691D /* AppDelegate.swift */,
 				9DA89D77196EDA430055691D /* ViewController.swift */,
+				EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */,
 				9DA89D79196EDA430055691D /* Main.storyboard */,
 				9DA89D7C196EDA430055691D /* Images.xcassets */,
 				9DA89D73196EDA430055691D /* Supporting Files */,
-				EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */,
 			);
 			path = "Taking Photos with the Camera";
 			sourceTree = "<group>";
