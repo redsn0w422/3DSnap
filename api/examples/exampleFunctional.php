@@ -3,18 +3,18 @@
 require_once("../src/snapchat.php");
 
 //////////// CONFIG ////////////
-$username       = ""; // Your snapchat username
-$password       = ""; // Your snapchat password
-$gEmail         = ""; // Gmail account
-$gPasswd        = ""; // Gmail account password
-$casperKey      = ""; // Casper API Key
-$casperSecret   = ""; // Casper API Secret
-$debug = false; // Set this to true if you want to see all outgoing requests and responses from server
+$username       = "makeboiler"; // Your snapchat username
+$password       = "BoilerMake1"; // Your snapchat password
+$gEmail         = "makeboiler@gmail.com"; // Gmail account
+$gPasswd        = "BoilerMake1"; // Gmail account password
+$casperKey      = "e353a611077d86617e6e5ffbb3a3774f"; // Casper API Key
+$casperSecret   = "de518df5975757cf18143185dbd25cc6"; // Casper API Secret
+$debug = true; // Set this to true if you want to see all outgoing requests and responses from server
 ////////////////////////////////
 
 
-$imagePath = ""; // URL or local path to a media file (image or video)
-$sendTo = array();
+$imagePath = "small.jpg"; // URL or local path to a media file (image or video)
+$sendTo = array("nirajpant7");
 
 $snapchat = new Snapchat($username, $gEmail, $gPasswd, $casperKey, $casperSecret, $debug);
 
@@ -28,7 +28,7 @@ echo "My friends: ";
 print_r($friends);
 
 // Send snap adding text to your image and 10 seconds
-// $snapchat->send($imagePath, $sendTo, "this is a test :D", 10);
+$snapchat->send($imagePath, $sendTo, "this is a test :D", 10);
 
 // Set a story
 // $snapchat->setStory($imagePath);
@@ -47,7 +47,7 @@ print_r($friends);
 // $snapchat->getStoriesByUsername("homie", true);
 
 // Send chat message to "username"
-$snapchat->sendMessage("sugar_caine", "hello from Snap-API!");
+// $snapchat->sendMessage("nirajpant7", "hello from Snap-API!");
 
 $snapchat->closeAppEvent();
 
