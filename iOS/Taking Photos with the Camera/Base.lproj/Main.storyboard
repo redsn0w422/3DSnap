@@ -75,8 +75,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step 1: Take photo of object" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkE-pR-j4z">
-                                <rect key="frame" x="198" y="260" width="214" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1: Take photo of object" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkE-pR-j4z">
+                                <rect key="frame" x="193.5" y="290" width="213.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -85,6 +85,10 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OkE-pR-j4z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PfW-RN-pWd"/>
+                            <constraint firstItem="OkE-pR-j4z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PhO-Oi-IsV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O7s-2w-Byi"/>
                     <connections>
@@ -136,8 +140,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step 2: Move phone slightly to the right and take another image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-Wr-mRn">
-                                <rect key="frame" x="69" y="289" width="485" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2: Move phone slightly to the right and take another image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-Wr-mRn">
+                                <rect key="frame" x="57.5" y="289.5" width="485" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -146,6 +150,10 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MXe-Wr-mRn" firstAttribute="centerY" secondItem="hKX-KC-4gW" secondAttribute="centerY" id="13Y-UR-R4E"/>
+                            <constraint firstItem="MXe-Wr-mRn" firstAttribute="centerX" secondItem="hKX-KC-4gW" secondAttribute="centerX" id="VmP-KB-tZs"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSR-m8-5vP" userLabel="First Responder" sceneMemberID="firstResponder"/>

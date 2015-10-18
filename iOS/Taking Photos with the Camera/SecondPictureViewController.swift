@@ -53,7 +53,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                     "image_right": base64String
                                 ]
                                 
-                                Alamofire.request(.POST, "https://4c576b5e.ngrok.com/send", parameters: parameters)
+                                Alamofire.request(.POST, "https://159.203.98.104:3000/send", parameters: parameters)
                                 print("Post req sent")
                             }
                         }
