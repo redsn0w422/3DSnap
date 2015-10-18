@@ -177,7 +177,11 @@ app.post('/get', function(req, res, next){
       ret["link"] = link.compImage;
     }
     else {
-      ret["link"] = link.image_left + "!?!?" + link.image_right;
+      ret["link"] = {
+        "link_left":link.image_left,
+        "link_right":link.image_right
+      };
+        // link.image_left + "!?!?" + link.image_right;
     }
     delete data[username];
   }
