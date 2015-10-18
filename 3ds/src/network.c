@@ -2,26 +2,50 @@
 
 #include "network.h"
 
-int sock;
-struct sockaddr_in sain, saout;
+int sock = -1;
+struct sockaddr_in server;
 char outBuf[128], rcvBuf[128];
 
 socklen_t sockaddr_in_sizePtr = (int)sizeof(struct sockaddr_in);
 
-bool openSocket(int port) {
-    sock = socket(AF_INET, SOCK_DGRAM, 0);
+bool openSocket(char *addr, int port) {
+    if(sock > 0) return false;
+    sock = socket(AF_INET, SOCK_STREAM, 0);
 
-    saout.sin_family = sain.sin_family = AF_INET;
-    saout.sin_port = sain.sin_port = htons(port);
-    sain.sin_addr.s_addr = INADDR_ANY;
+    server.sin_family = AF_INET;
+    server.sin_port = htons(port);
+    server.sin_addr.s_addr = inet_addr(addr);
 
-    bind(sock, (struct sockaddr *)&sain, sizeof(sain));
+    int ret = connect(sock, (struct sockaddr *)&server, sizeof(server));
+    if(ret) return false;
 
-    fcntl(sock, F_SETFL, O_NONBLOCK);
+    //fcntl(sock, F_SETFL, O_NONBLOCK);
 
     return true;
 }
 
+void closeSocket() {
+    close(sock);
+    sock = -1;
+}
+
+u32 sendBuf(void* buffer, size_t count)
+{
+  size_t left_to_write = count;
+  while (left_to_write > 0) {
+    size_t written = send (sock, buffer, count, 0);
+    if (written == -1)
+      /* An error occurred; bail.  */
+      return -1;
+    else
+      /* Keep count of how much more we need to write.  */
+      left_to_write -= written;
+  }
+  /* The number of bytes written is exactly COUNT.  */
+  return (u32) count;
+}
+
+/*
 void sendBuf(int length) {
     sendto(sock, (char *)&outBuf, length, 0, (struct sockaddr *)&saout, sizeof(saout));
 }
@@ -42,3 +66,4 @@ void sendKeys(unsigned int keys, circlePosition circlePad, circlePosition cStick
     outBuf[17] = '\n';
     sendBuf(18);
 }
+*/
