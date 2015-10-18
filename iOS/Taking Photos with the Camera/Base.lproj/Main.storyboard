@@ -56,7 +56,7 @@
                     <connections>
                         <outlet property="usernameField" destination="jxY-fW-4ph" id="3aZ-LL-8Yh"/>
                         <segue destination="Ci2-9r-rCN" kind="show" identifier="takeSnap" id="A30-ui-OA8"/>
-                        <segue destination="Yn0-iy-IVp" kind="show" identifier="showImage" id="9ph-0u-cBB"/>
+                        <segue destination="xi3-dB-gye" kind="show" identifier="showImage" id="RMk-4u-07q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7U-Oh-F6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,7 +79,7 @@
                                 <rect key="frame" x="193.5" y="290" width="213.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8f-4c-JBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="878"/>
+            <point key="canvasLocation" x="606" y="824"/>
         </scene>
         <!--Second Picture View Controller-->
         <scene sceneID="ml5-lz-8pv">
@@ -140,11 +140,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2: Move phone slightly to the right and take another image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-Wr-mRn">
-                                <rect key="frame" x="57.5" y="289.5" width="485" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2: Move phone slightly to the right and take another image" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-Wr-mRn">
+                                <rect key="frame" x="57.5" y="290" width="485" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -178,25 +178,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gf-dS-WvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="618" y="30"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0Hy-oz-5r7">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yn0-iy-IVp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ic6-S2-JUv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xi3-dB-gye" kind="relationship" relationship="rootViewController" id="y0B-zd-w2q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W0d-D4-2lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="618" y="878"/>
         </scene>
     </scenes>
 </document>

@@ -4,7 +4,7 @@ import Alamofire
 
 class SecondPictureViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
+    var imageView : UIImageView?
     /* We will use this variable to determine if the viewDidAppear:
     method of our view controller is already called or not. If not, we will
     display the camera view */
@@ -44,7 +44,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                 var imageData = UIImageJPEGRepresentation(theImage, 0.9)
                                 var base64String = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
                                 print(base64String)
-                                
                                 
                                 let parameters = [
                                     "sendFrom": "niraj",
@@ -115,10 +114,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             
             if let theController = controller{
                 theController.sourceType = .Camera
+                theController.delegate = self
                 
-                let overlayView = UIView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
-                overlayView.backgroundColor = UIColor.redColor()
-                controller?.cameraOverlayView = overlayView
+                print("image string: \(image1string)")
+                let overlayView = imageView
+                overlayView!.frame = CGRect(x: 0, y: 40, width: 350, height: 450)
+                overlayView!.backgroundColor = UIColor.clearColor().colorWithAlphaComponent(0.2)
+                overlayView?.alpha = 0.5
+                theController.cameraOverlayView = overlayView
                 
                 theController.mediaTypes = [kUTTypeImage as String]
                 

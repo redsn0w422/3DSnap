@@ -3,6 +3,7 @@ import MobileCoreServices
 import Alamofire
 
 var image1string : String = String()
+var initialImageView : UIImageView?
 
 class ViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -44,11 +45,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
               if let theImage = image{
                 print("Image Metadata = \(theMetaData)")
                 print("Image = \(theImage)")
+                initialImageView = UIImageView(image: theImage)
                 var imageData = UIImageJPEGRepresentation(theImage, 0.9)
                 var base64String = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
                 image1string = base64String
                 print(base64String)
-                
               }
             }
           }
@@ -92,6 +93,13 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   func doesCameraSupportTakingPhotos() -> Bool{
     return cameraSupportsMedia(kUTTypeImage as String, sourceType: .Camera)
   }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "secondVC" {
+            let destVC = segue.destinationViewController as! SecondPictureViewController
+            destVC.imageView = initialImageView
+        }
+    }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
