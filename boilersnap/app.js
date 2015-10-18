@@ -55,16 +55,26 @@ app.post('/send', function(req, res, next)
   var link_left = "";
   var link_right = "";
 
+  constructLink = function(left, right)
+  {
+    var ret = "http://159.203.98.104/Boilermake2015/api/info.php";
+    ret += "?url1="+left;
+    ret += "&url2="+right;
+    return ret;
+  }
+
   done = function(){
     // console.log("entered done");
+    var url = constructLink(link_left, link_right);
     data[sendTo] = {
       "from":sendFrom,
       "image_left":link_left,
-      "image_right":link_right
+      "image_right":link_right,
+      "compImage":url
     };
     console.log("DATA:");
     console.log(data);
-    res.send(link_left + "\n" + link_right);
+    res.send(url);
     res.end();
   }
 
@@ -155,13 +165,25 @@ app.post('/get', function(req, res, next){
   console.log(req.body);
   console.log(data);
   var username = req.body.username;
+  var client = req.body.client;
 
   var link = data[username];
-  var ret = "No snapchats found :(";
+  // var ret = "No snapchats found :(";
+  var ret = {};
   if (link != null)
   {
-    ret = link;
+    if (client == "mobile")
+    {
+      ret["link"] = link.compImage;
+    }
+    else {
+      ret["link"] = link.image_left + "!?!?" + link.image_right;
+    }
     delete data[username];
+  }
+  else
+  {
+    ret["error"] = "No snaps found.";
   }
   res.send(ret);
   res.end();
