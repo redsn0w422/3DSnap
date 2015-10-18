@@ -26,7 +26,7 @@ class EnteringViewController: UIViewController {
                     print("JSON: \(JSON)")
                     if JSON["error"] as! String? == "No snaps found." {
                         var alert = UIAlertController(title: "Alert", message: "Unfortunately, this user has no snaps. rip", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "Fine", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)
                     }
                     else {
