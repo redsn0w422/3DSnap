@@ -49,15 +49,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 image1string = base64String
                 print(base64String)
                 
-//                let parameters = [
-//                    "sendFrom": "niraj",
-//                    "sendTo": "yasha",
-//                    "image_left": base64String,
-//                    "image_right": base64String
-//                ]
-                
-//                Alamofire.request(.POST, "https://4c576b5e.ngrok.com/send", parameters: parameters)
-                
               }
             }
           }

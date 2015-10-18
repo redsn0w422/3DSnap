@@ -5,8 +5,18 @@ class EnteringViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
 
     @IBAction func viewSnapButtonClicked(sender: AnyObject) {
-        Alamofire.request(.GET, "https://4c576b5e.ngrok.com/get", parameters: ["username": usernameField.text!, "client": "mobile"])
-            .responseJSON { response in
+        print("clicked")
+        // if returns image, segue
+        // if not, alert modal
+        
+        let parameters = [
+            "username": usernameField.text!,
+            "client": "mobile"
+        ]
+        
+        Alamofire.request(.POST, "https://4c576b5e.ngrok.com/get", parameters: parameters)
+            .responseJSON{
+                response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
@@ -14,10 +24,18 @@ class EnteringViewController: UIViewController {
                 
                 if let JSON = response.result.value {
                     print("JSON: \(JSON)")
+                    if JSON["error"] as! String? == "No snaps found." {
+                        var alert = UIAlertController(title: "Alert", message: "Unfortunately, this user has no snaps. rip", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    }
+                    else {
+                        // parse image into UIImage and add to global variable
+                        self.performSegueWithIdentifier("showImage", sender: nil)
+                        //populate view
+                    }
                 }
         }
-        // if returns image, segue
-        // if not, alert modal
     }
     
     @IBAction func takeSnapButtonClicked(sender: AnyObject) {

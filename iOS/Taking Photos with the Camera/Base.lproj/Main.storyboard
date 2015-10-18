@@ -45,12 +45,13 @@
                     </view>
                     <connections>
                         <outlet property="usernameField" destination="jxY-fW-4ph" id="3aZ-LL-8Yh"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="takeSnap" id="A30-ui-OA8"/>
+                        <segue destination="Ci2-9r-rCN" kind="show" identifier="takeSnap" id="A30-ui-OA8"/>
+                        <segue destination="Yn0-iy-IVp" kind="show" identifier="showImage" id="9ph-0u-cBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7U-Oh-F6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284" y="324"/>
+            <point key="canvasLocation" x="-448" y="448"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -64,8 +65,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkE-pR-j4z">
-                                <rect key="frame" x="296" y="289" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step 1: Take photo of object" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkE-pR-j4z">
+                                <rect key="frame" x="198" y="260" width="214" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -75,13 +76,40 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="O7s-2w-Byi"/>
                     <connections>
                         <segue destination="jba-lL-a2T" kind="show" identifier="secondVC" id="Ssn-7Q-8vR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="574" y="312"/>
+            <point key="canvasLocation" x="1430" y="30"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="mbH-Oo-N33">
+            <objects>
+                <viewController id="xi3-dB-gye" customClass="ImageViewController" customModule="Taking_Photos_with_the_Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lsF-m3-van"/>
+                        <viewControllerLayoutGuide type="bottom" id="GWW-6S-57V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jqj-fC-CTa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uuh-ep-Pp0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rid-Gs-nay"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A8f-4c-JBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1430" y="878"/>
         </scene>
         <!--Second Picture View Controller-->
         <scene sceneID="ml5-lz-8pv">
@@ -95,8 +123,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sdfasdfasdfsdfsdfsdfsdfsdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-Wr-mRn">
-                                <rect key="frame" x="218" y="271" width="210" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step 2: Move phone slightly to the right and take another image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-Wr-mRn">
+                                <rect key="frame" x="69" y="289" width="485" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -109,7 +137,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSR-m8-5vP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="313"/>
+            <point key="canvasLocation" x="2220" y="30"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kRj-HH-UGC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ci2-9r-rCN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LFh-lz-d2N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="3x7-Vx-C63"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Gf-dS-WvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618" y="30"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Hy-oz-5r7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yn0-iy-IVp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ic6-S2-JUv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xi3-dB-gye" kind="relationship" relationship="rootViewController" id="y0B-zd-w2q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W0d-D4-2lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618" y="878"/>
         </scene>
     </scenes>
 </document>
