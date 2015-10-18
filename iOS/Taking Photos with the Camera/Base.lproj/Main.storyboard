@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -191,26 +191,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozg-I5-E6r">
-                                <rect key="frame" x="253" y="382" width="79" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Send Snap!"/>
-                                <connections>
-                                    <action selector="sendSnapButtonClicked:" destination="J6H-lx-mlp" eventType="touchUpInside" id="SG2-Uf-xFs"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Send to" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vo-eD-ESA">
                                 <rect key="frame" x="252" y="214" width="97" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozg-I5-E6r">
+                                <rect key="frame" x="260.5" y="285" width="79" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Send Snap!"/>
+                                <connections>
+                                    <action selector="sendSnapButtonClicked:" destination="J6H-lx-mlp" eventType="touchUpInside" id="SG2-Uf-xFs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ozg-I5-E6r" firstAttribute="centerX" secondItem="wat-Cd-C7Y" secondAttribute="centerX" id="2WJ-yH-WbK"/>
                             <constraint firstItem="PSi-5D-dPQ" firstAttribute="centerX" secondItem="wat-Cd-C7Y" secondAttribute="centerX" id="NnA-Cx-ZJc"/>
-                            <constraint firstItem="2I3-fW-pvY" firstAttribute="top" secondItem="Ozg-I5-E6r" secondAttribute="bottom" constant="100" id="Oqq-k2-DY5"/>
+                            <constraint firstItem="2I3-fW-pvY" firstAttribute="top" secondItem="Ozg-I5-E6r" secondAttribute="bottom" constant="285" id="Oqq-k2-DY5"/>
                             <constraint firstItem="2Vo-eD-ESA" firstAttribute="centerX" secondItem="wat-Cd-C7Y" secondAttribute="centerX" id="ohG-ey-cXJ"/>
                         </constraints>
                     </view>

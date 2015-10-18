@@ -43,13 +43,12 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
               let image = info[UIImagePickerControllerOriginalImage]
                 as? UIImage
               if let theImage = image{
-                print("Image Metadata = \(theMetaData)")
-                print("Image = \(theImage)")
+//                print("Image Metadata = \(theMetaData)")
+//                print("Image = \(theImage)")
                 initialImageView = UIImageView(image: theImage)
                 var imageData = UIImageJPEGRepresentation(theImage, 0.9)
                 var base64String = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
                 image1string = base64String
-                print(base64String)
               }
             }
           }
