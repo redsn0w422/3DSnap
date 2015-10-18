@@ -17,25 +17,20 @@
 #include "network.h"
 
 #define CONFIG_3D_SLIDERSTATE (*(volatile float*)0x1FF81080)
+#define WAIT_TIMEOUT 300000000ULL
 
 static jmp_buf exitJmp;
 
-static char buffer[128];
-
 void hang(char *message) {
+    clearScreen();
+    printf("%s", message);
+    printf("Press start to exit");
+
     while (aptMainLoop()) {
         hidScanInput();
 
-        clearScreen();
-        drawString(10, 10, "%s", message);
-        drawString(10, 20, "Press start to exit");
-
         u32 kHeld = hidKeysHeld();
         if (kHeld & KEY_START) longjmp(exitJmp, 1);
-
-        gfxFlushBuffers();
-        gspWaitForVBlank();
-        gfxSwapBuffers();
     }
 }
 
@@ -56,15 +51,6 @@ void displayMessage(int x, int y, char *msg) {
     gfxFlushBuffers();
     gfxSwapBuffers();
 }
-
-/*
-r = (uint8_t) ((data >> 11) & 0x1F) << 3;
-r |= (r >> 5);
-g = (uint8_t) ((data >> 5) & 0x3F) << 2;
-g |= (g >> 6);
-b = (uint8_t) (data & 0x1F) << 3;
-b |= (b >> 5);
-*/
 
 void convertRGB565ToRGB888(u8 *dst, u16 *src) {
     int i;
@@ -116,7 +102,7 @@ void writePictureToFramebufferRGB888(void *fb, u8 *img) {
     }
 }
 
-u8* takePicture3D() {
+u8* takePicture3D(u8 *buf) {
     u16 width = 400;
     u16 height = 240;
     u32 screen_size = width * height * 2;
@@ -131,32 +117,35 @@ u8* takePicture3D() {
 
     printf("CAMU_Activate: 0x%08X\n", (unsigned int) CAMU_Activate(select));
 
-    u8* buf = (u8*) malloc(mem_size);
+    if(!buf) {
+        buf = (u8*) malloc(mem_size);
+        if(buf == NULL) {
+            hang("Unable to allocate memory!");
+        }
+    }
 
     Handle camReceiveEvent = 0;
     Handle camReceiveEvent2 = 0;
 
     printf("CAMU_ClearBuffer: 0x%08X\n", (unsigned int) CAMU_ClearBuffer(PORT_CAM1));
     printf("CAMU_ClearBuffer: 0x%08X\n", (unsigned int) CAMU_ClearBuffer(PORT_CAM2));
+    printf("CAMU_SynchronizeVsyncTiming: 0x%08X\n", (unsigned int) CAMU_SynchronizeVsyncTiming(SELECT_OUT1, SELECT_OUT2));
     printf("CAMU_SetReceiving: 0x%08X\n", (unsigned int) CAMU_SetReceiving(&camReceiveEvent, buf, PORT_CAM1, width * height * 2, (s16) bufSize));
     printf("CAMU_SetReceiving: 0x%08X\n", (unsigned int) CAMU_SetReceiving(&camReceiveEvent2, buf + width * height * 2, PORT_CAM2, width * height * 2, (s16) bufSize));
     printf("CAMU_StartCapture: 0x%08X\n", (unsigned int) CAMU_StartCapture(PORT_CAM1));
     printf("CAMU_StartCapture: 0x%08X\n", (unsigned int) CAMU_StartCapture(PORT_CAM2));
-    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, U64_MAX));
-    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent2, U64_MAX));
+    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, WAIT_TIMEOUT));
+    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent2, WAIT_TIMEOUT));
 
     printf("CAMU_SetReceiving: 0x%08X\n", (unsigned int) CAMU_SetReceiving(&camReceiveEvent, buf, PORT_CAM1, width * height * 2, (s16) bufSize));
     printf("CAMU_SetReceiving: 0x%08X\n", (unsigned int) CAMU_SetReceiving(&camReceiveEvent2, buf + width * height * 2, PORT_CAM2, width * height * 2, (s16) bufSize));
-    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, U64_MAX));
-    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent2, U64_MAX));
+    printf("CAMU_PlayShutterSound: 0x%08X\n", (unsigned int) CAMU_PlayShutterSound(SHUTTER_SOUND_TYPE_NORMAL));
+    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, WAIT_TIMEOUT));
+    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent2, WAIT_TIMEOUT));
     printf("CAMU_StopCapture: 0x%08X\n", (unsigned int) CAMU_StopCapture(PORT_CAM1));
     printf("CAMU_StopCapture: 0x%08X\n", (unsigned int) CAMU_StopCapture(PORT_CAM2));
 
     printf("CAMU_Activate: 0x%08X\n", (unsigned int) CAMU_Activate(SELECT_NONE));
-
-    gfxFlushBuffers();
-    gspWaitForVBlank();
-    gfxSwapBuffers();
 
     return buf;
 }
@@ -220,17 +209,14 @@ u8* takePictureInner() {
     printf("CAMU_ClearBuffer: 0x%08X\n", (unsigned int) CAMU_ClearBuffer(PORT_CAM1));
     printf("CAMU_SetReceiving: 0x%08X\n", (unsigned int) CAMU_SetReceiving(&camReceiveEvent, buf, PORT_CAM1, width * height * 2, (s16) bufSize));
     printf("CAMU_StartCapture: 0x%08X\n", (unsigned int) CAMU_StartCapture(PORT_CAM1));
-    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, U64_MAX));
+    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, WAIT_TIMEOUT));
 
     printf("CAMU_SetReceiving: 0x%08X\n", (unsigned int) CAMU_SetReceiving(&camReceiveEvent, buf, PORT_CAM1, width * height * 2, (s16) bufSize));
-    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, U64_MAX));
+    printf("CAMU_PlayShutterSound: 0x%08X\n", (unsigned int) CAMU_PlayShutterSound(SHUTTER_SOUND_TYPE_NORMAL));
+    printf("svcWaitSynchronization: 0x%08X\n", (unsigned int) svcWaitSynchronization(camReceiveEvent, WAIT_TIMEOUT));
 
     printf("CAMU_StopCapture: 0x%08X\n", (unsigned int) CAMU_StopCapture(PORT_CAM1));
     printf("CAMU_Activate: 0x%08X\n", (unsigned int) CAMU_Activate(SELECT_NONE));
-
-    gfxFlushBuffers();
-    gspWaitForVBlank();
-    gfxSwapBuffers();
 
     return buf;
 }
@@ -239,10 +225,11 @@ int main() {
     // Initializations
     acInit();
     gfxInitDefault();
+    consoleInit(GFX_BOTTOM, NULL);
 
     // Enable double buffering to remove screen tearing
     gfxSetDoubleBuffering(GFX_TOP, true);
-    gfxSetDoubleBuffering(GFX_BOTTOM, true);
+    gfxSetDoubleBuffering(GFX_BOTTOM, false);
 
     // Save current stack frame for easy exit
     if(setjmp(exitJmp)) {
@@ -251,14 +238,14 @@ int main() {
     }
 
     // Set up file system
-    displayMessage(10, 10, "Initializing file system");
+    printf("Initializing file system\n");
     fsInit();
 
     // Set up Wi-Fi
-    displayMessage(10, 10, "Initializing SOC");
+    printf("Initializing SOC\n");
     SOC_Initialize((u32*) memalign(0x1000, 0x100000), 0x100000);
 
-    displayMessage(10, 10, "Initializing Wi-Fi + network");
+    printf("Initializing Wi-Fi/network\n");
     u32 wifiStatus = 0;
     ACU_GetWifiStatus(NULL, &wifiStatus);
     if(!wifiStatus) {
@@ -274,9 +261,7 @@ int main() {
     circlePosition cStick;
     touchPosition touch;
 
-    clearScreen();
-
-    displayMessage(10, 10, "Initializing camera");
+    printf("Initializing camera\n");
 
     u16 width = 400;
     u16 height = 240;
@@ -296,13 +281,17 @@ int main() {
     printf("CAMU_SetTrimming: 0x%08X\n", (unsigned int) CAMU_SetTrimming(PORT_CAM1, false));
     printf("CAMU_SetTrimming: 0x%08X\n", (unsigned int) CAMU_SetTrimming(PORT_CAM2, false));
     //printf("CAMU_SetTrimmingParamsCenter: 0x%08X\n", (unsigned int) CAMU_SetTrimmingParamsCenter(PORT_CAM1, 512, 240, 512, 384));
+    //
+    u8 *buf = malloc(400*240*3*2);
+    u8 *cam_buf = malloc(400*240*2*2);
 
-    u8 *buf = takePicture3D();
-    u8 *tmp = malloc(400 * 240 * 3 * 2);
-    convertRGB565ToRGB888(tmp, buf);
-    free(buf);
-    buf = tmp;
-    tmp = NULL;
+    FILE *file = fopen("logo.bin","rb");
+    fseek(file,0,SEEK_END);
+    off_t file_size = ftell(file);
+    fseek(file,0,SEEK_SET);
+    off_t bytesRead = fread(buf,1,file_size,file);
+    fclose(file);
+    memcpy(buf + (400 * 320 * 3), buf, 400 * 320 * 3);
 
     gfxFlushBuffers();
     gspWaitForVBlank();
@@ -312,10 +301,17 @@ int main() {
     bool held_B = false;
     bool held_R = false;
 
+    printf("\n3DSnap build 85\n");
+    printf("Welcome wchill\n");
+
+    printf("\nPress R to take a new picture\n");
+    printf("Press A to download received snap\n");
+    printf("Press B to send current snap\n");
+    printf("Use slider to enable/disable 3D\n");
+    printf("Press Start to exit to Homebrew Launcher\n");
+
     // Main loop
     while (aptMainLoop()) {
-        clearScreen();
-
         // Read which buttons are currently pressed or not
         hidScanInput();
         kDown = hidKeysDown();
@@ -336,7 +332,7 @@ int main() {
         if (kHeld & KEY_A) {
             if(!held_A) {
                 held_A = true;
-                drawString(20, 160, "Downloading");
+                printf("Fetching new snap\n");
                 gfxFlushBuffers();
                 gspWaitForVBlank();
                 gfxSwapBuffers();
@@ -344,14 +340,13 @@ int main() {
                 httpcContext context;
                 Result ret = httpcOpenContext(&context, url, 0);
                 ret |= http_download(&context, buf);
-                /*
                 if(ret) {
-                    hang("Failed to download!");
+                    printf("An error occurred (no new snaps?)\n");
+                } else {
+                    printf("Snap downloaded\n");
                 }
-                */
                 httpcCloseContext(&context);
             }
-            drawString(20, 20, "A");
         }
         if (!(kHeld & KEY_A)) {
             held_A = false;
@@ -359,41 +354,99 @@ int main() {
         if (kHeld & KEY_B) {
             if(!held_B) {
                 held_B = true;
-                drawString(20, 160, "Uploading to server");
+                printf("Press up/down to change letter\n");
+                printf("Press left/right to change position\n");
+                printf("Press A to send to this recipient\n");
+                char alphabet[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+                char recipient[32];
+                memset(recipient, 0, 32);
+                recipient[0] = 1;
+                gfxSet3D(false);
+                int pos = 0;
+                bool held_up = false;
+                bool held_down = false;
+                bool held_left = false;
+                bool held_right = false;
+                int i;
+                while(aptMainLoop()) {
+                    hidScanInput();
+                    kDown = hidKeysDown();
+                    kHeld = hidKeysHeld();
+                    memset(gfxGetFramebuffer(GFX_TOP, GFX_LEFT, NULL, NULL), 0, 400 * 240 * 3);
+                    drawStringFramebuffer(gfxGetFramebuffer(GFX_TOP, GFX_LEFT, NULL, NULL), 10, 10, "Recipient: ");
+                    char tmpstr[2];
+                    tmpstr[1] = 0;
+                    for(i = 0; i <= pos; i++) {
+                        tmpstr[0] = alphabet[recipient[i] - 1];
+                        drawStringFramebuffer(gfxGetFramebuffer(GFX_TOP, GFX_LEFT, NULL, NULL), 120 + 9 * i, 10, tmpstr);
+                    }
+                    if(kHeld & KEY_A) {
+                        break;
+                    }
+                    if((kHeld & KEY_DUP) && !held_up) {
+                        recipient[pos]--;
+                        if(recipient[pos] <= 0) recipient[pos] += strlen(alphabet);
+                        held_up = true;
+                    } else if((kHeld & KEY_DDOWN) && !held_down) {
+                        recipient[pos] = ((recipient[pos]) % strlen(alphabet)) + 1;
+                        held_down = true;
+                    } else if((kHeld & KEY_DLEFT) && !held_left && pos > 0) {
+                        recipient[pos--] = 0;
+                        held_left = true;
+                    } else if((kHeld & KEY_DRIGHT) && !held_right && pos < 29) {
+                        recipient[pos+1] = recipient[pos];
+                        pos++;
+                        held_right = true;
+                    }
+                    if(!(kHeld & KEY_DUP)) {
+                        held_up = false;
+                    }
+                    if(!(kHeld & KEY_DDOWN)) {
+                        held_down = false;
+                    }
+                    if(!(kHeld & KEY_DLEFT)) {
+                        held_left = false;
+                    }
+                    if(!(kHeld & KEY_DRIGHT)) {
+                        held_right = false;
+                    }
+                    gfxFlushBuffers();
+                    gspWaitForVBlank();
+                    gfxSwapBuffers();
+                }
+                printf("Sending snap\n");
                 gfxFlushBuffers();
                 gspWaitForVBlank();
                 gfxSwapBuffers();
                 if(!openSocket("104.131.69.59", 6000)) {
-                    hang("Failed to connect!");
-                }
-                // write data
-                char send[] = "wchill-wchill\n";
-                int count = sendBuf(send, strlen(send));
-                count += sendBuf(buf, 400 * 240 * 3 * 2);
-                closeSocket();
-                if(count != strlen(send) + (400 * 240 * 3 * 2)) {
-                    hang("Data mismatch!");
+                    printf("ERROR: Failed to connect!\n");
+                } else {
+                    // write data
+                    char send[] = "wchill-";
+                    int count = sendBuf(send, strlen(send));
+                    recipient[strlen(recipient)] = '\n';
+                    count += sendBuf(recipient, strlen(recipient));
+                    count += sendBuf(buf, 400 * 240 * 3 * 2);
+                    closeSocket();
+                    if(count != strlen(send) + strlen(recipient) + (400 * 240 * 3 * 2)) {
+                        hang("WARNING: Data transmission error!\n");
+                    }
+                    printf("Snap upload complete\n");
                 }
             }
-            drawString(35, 20, "B");
         }
         if (!(kHeld & KEY_B)) {
             held_B = false;
         }
         if (kHeld & KEY_R) {
             if(!held_R) {
-                drawString(20, 160, "Capturing new image (may hang)");
+                printf("Capturing new image (may hang!)\n");
                 gfxFlushBuffers();
                 gspWaitForVBlank();
                 gfxSwapBuffers();
                 held_R = true;
-                free(buf);
-                buf = takePicture3D();
-                tmp = malloc(400 * 240 * 3 * 2);
-                convertRGB565ToRGB888(tmp, buf);
-                free(buf);
-                buf = tmp;
-                tmp = NULL;
+                takePicture3D(cam_buf);
+                convertRGB565ToRGB888(buf, cam_buf);
 
                 gfxFlushBuffers();
                 gspWaitForVBlank();
@@ -403,67 +456,15 @@ int main() {
         if (!(kHeld & KEY_R)) {
             held_R = false;
         }
-        if (kHeld & KEY_X) {
-            drawString(50, 20, "X");
-        }
-        if (kHeld & KEY_Y) {
-            drawString(65, 20, "Y");
-        }
-        if (kHeld & KEY_L) {
-            drawString(80, 20, "L");
-        }
-        if (kHeld & KEY_R) {
-            drawString(95, 20, "R");
-        }
-        if (kHeld & KEY_ZL) {
-            drawString(110, 20, "ZL");
-        }
-        if (kHeld & KEY_ZR) {
-            drawString(135, 20, "ZR");
-        }
-
-        if (kHeld & KEY_DUP) {
-            drawString(20, 30, "UP");
-        }
-        if (kHeld & KEY_DDOWN) {
-            drawString(45, 30, "DOWN");
-        }
-        if (kHeld & KEY_DLEFT) {
-            drawString(90, 30, "LEFT");
-        }
-        if (kHeld & KEY_DRIGHT) {
-            drawString(135, 30, "RIGHT");
-        }
 
         if(CONFIG_3D_SLIDERSTATE > 0.0f) {
             gfxSet3D(true);
             writePictureToFramebufferRGB888(gfxGetFramebuffer(GFX_TOP, GFX_LEFT, NULL, NULL), buf);
             writePictureToFramebufferRGB888(gfxGetFramebuffer(GFX_TOP, GFX_RIGHT, NULL, NULL), buf + (400 * 240 * 3));
-            //writePictureToFramebufferRGB565Left(gfxGetFramebuffer(GFX_TOP, GFX_LEFT, NULL, NULL), buf, (u16) offset);
-            //writePictureToFramebufferRGB565Right(gfxGetFramebuffer(GFX_TOP, GFX_RIGHT, NULL, NULL), buf + screen_size, (u16) offset);
         } else {
             gfxSet3D(false);
             writePictureToFramebufferRGB888(gfxGetFramebuffer(GFX_TOP, GFX_LEFT, NULL, NULL), buf);
         }
-
-        drawString(20, 50, itoa(circlePad.dx, buffer, 10));
-        drawString(55, 50, itoa(circlePad.dy, buffer, 10));
-        drawString(20, 60, itoa(cStick.dx, buffer, 10));
-        drawString(55, 60, itoa(cStick.dy, buffer, 10));
-        sprintf(buffer, "%f", slider3D);
-        drawString(20, 70, buffer);
-
-        if(touch.px && touch.py) {
-            drawBox(touch.px - 2, touch.py - 2, 5, 5, 255, 255, 255);
-        }
-
-        // Reset framebuffers
-        //fbTopLeft = gfxGetFramebuffer(GFX_TOP, GFX_LEFT, NULL, NULL);
-        //fbTopRight = gfxGetFramebuffer(GFX_TOP, GFX_RIGHT, NULL, NULL);
-        //fbBottom = gfxGetFramebuffer(GFX_BOTTOM, 0, NULL, NULL);
-        //memset(fbTopLeft, 0, 240 * 400 * 3);
-        //memset(fbTopRight, 0, 240 * 400 * 3);
-        //memset(fbBottom, 0, 240 * 320 * 3);
 
         // Flush and swap framebuffers
         gfxFlushBuffers();
@@ -473,6 +474,7 @@ int main() {
 
     // Exit
     free(buf);
+    free(cam_buf);
     cleanup();
 
     // Return to hbmenu

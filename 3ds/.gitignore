@@ -5,5 +5,7 @@
 *.o
 *.d
 build
+test
 .DS_Store
 *.png
+*.old
