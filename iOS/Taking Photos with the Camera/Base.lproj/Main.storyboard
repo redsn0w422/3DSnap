@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
+        <!--Entering View Controller-->
+        <scene sceneID="xc7-Qz-raP">
+            <objects>
+                <viewController id="ICK-71-20G" customClass="EnteringViewController" customModule="Taking_Photos_with_the_Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6BR-6K-kBN"/>
+                        <viewControllerLayoutGuide type="bottom" id="t3T-kD-fKi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m1h-wr-iBD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxY-fW-4ph">
+                                <rect key="frame" x="97" y="76" width="458" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMU-LO-QeY">
+                                <rect key="frame" x="237" y="115" width="72" height="30"/>
+                                <animations/>
+                                <state key="normal" title="View Snap"/>
+                                <connections>
+                                    <action selector="viewSnapButtonClicked:" destination="ICK-71-20G" eventType="touchUpInside" id="883-NY-2S0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-cT-Zmj">
+                                <rect key="frame" x="251" y="379" width="70" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Take snap"/>
+                                <connections>
+                                    <action selector="takeSnapButtonClicked:" destination="ICK-71-20G" eventType="touchUpInside" id="E5b-sX-ofz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="usernameField" destination="jxY-fW-4ph" id="3aZ-LL-8Yh"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="takeSnap" id="A30-ui-OA8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7U-Oh-F6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-284" y="324"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -34,6 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="574" y="312"/>
         </scene>
         <!--Second Picture View Controller-->
         <scene sceneID="ml5-lz-8pv">
@@ -61,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSR-m8-5vP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="376"/>
+            <point key="canvasLocation" x="1390" y="313"/>
         </scene>
     </scenes>
 </document>

@@ -14,6 +14,7 @@
 		9DA89D7D196EDA430055691D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA89D7C196EDA430055691D /* Images.xcassets */; };
 		9DA89D89196EDA430055691D /* Taking_Photos_with_the_CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA89D88196EDA430055691D /* Taking_Photos_with_the_CameraTests.swift */; };
 		EB2B73D51BD2F88B00B8142F /* SecondPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EB2CB7051BD312C200907E65 /* EnteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2CB7041BD312C200907E65 /* EnteringViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		9DA89D88196EDA430055691D /* Taking_Photos_with_the_CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taking_Photos_with_the_CameraTests.swift; sourceTree = "<group>"; };
 		E77D3F152701101BBB0480E0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPictureViewController.swift; sourceTree = "<group>"; };
+		EB2CB7041BD312C200907E65 /* EnteringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnteringViewController.swift; sourceTree = "<group>"; };
 		F551D94A34971A494C46BF48 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 				9DA89D75196EDA430055691D /* AppDelegate.swift */,
 				9DA89D77196EDA430055691D /* ViewController.swift */,
 				EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */,
+				EB2CB7041BD312C200907E65 /* EnteringViewController.swift */,
 				9DA89D79196EDA430055691D /* Main.storyboard */,
 				9DA89D7C196EDA430055691D /* Images.xcassets */,
 				9DA89D73196EDA430055691D /* Supporting Files */,
@@ -290,6 +293,7 @@
 			files = (
 				EB2B73D51BD2F88B00B8142F /* SecondPictureViewController.swift in Sources */,
 				9DA89D78196EDA430055691D /* ViewController.swift in Sources */,
+				EB2CB7051BD312C200907E65 /* EnteringViewController.swift in Sources */,
 				9DA89D76196EDA430055691D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
