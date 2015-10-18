@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Entering View Controller-->
@@ -17,31 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxY-fW-4ph">
-                                <rect key="frame" x="97" y="76" width="458" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMU-LO-QeY">
-                                <rect key="frame" x="237" y="115" width="72" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMU-LO-QeY">
+                                <rect key="frame" x="264" y="124" width="72" height="30"/>
                                 <animations/>
                                 <state key="normal" title="View Snap"/>
                                 <connections>
                                     <action selector="viewSnapButtonClicked:" destination="ICK-71-20G" eventType="touchUpInside" id="883-NY-2S0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-cT-Zmj">
-                                <rect key="frame" x="251" y="379" width="70" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-cT-Zmj">
+                                <rect key="frame" x="265" y="470" width="70" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Take snap"/>
                                 <connections>
                                     <action selector="takeSnapButtonClicked:" destination="ICK-71-20G" eventType="touchUpInside" id="E5b-sX-ofz"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxY-fW-4ph">
+                                <rect key="frame" x="40" y="79" width="520" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2E6-cT-Zmj" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="2J2-1n-cY2"/>
+                            <constraint firstItem="xMU-LO-QeY" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="4Hp-2M-04c"/>
+                            <constraint firstItem="jxY-fW-4ph" firstAttribute="leading" secondItem="m1h-wr-iBD" secondAttribute="leadingMargin" constant="20" id="7MU-Dn-TPU"/>
+                            <constraint firstItem="t3T-kD-fKi" firstAttribute="top" secondItem="2E6-cT-Zmj" secondAttribute="bottom" constant="100" id="CGC-KA-mYr"/>
+                            <constraint firstItem="jxY-fW-4ph" firstAttribute="top" secondItem="m1h-wr-iBD" secondAttribute="topMargin" constant="79" id="SWg-kk-bgO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jxY-fW-4ph" secondAttribute="trailing" constant="20" id="tWW-qA-V0A"/>
+                            <constraint firstItem="jxY-fW-4ph" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="uLN-GZ-9MA"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="usernameField" destination="jxY-fW-4ph" id="3aZ-LL-8Yh"/>

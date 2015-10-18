@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 
 class ImageViewController: UIViewController {
 
@@ -7,7 +8,10 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let fileUrl = NSURL(string: urlString)
-        theImageView.setImageWithUrl(fileUrl!)
+        Alamofire.request(.GET, urlString)
+            .response { (request, response, data, error) in
+                self.theImageView.image = UIImage(data: data!, scale: 1)
+        }
     }
 
     override func didReceiveMemoryWarning() {

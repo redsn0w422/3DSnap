@@ -105,12 +105,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     if isCameraAvailable() && doesCameraSupportTakingPhotos(){
-      count++
-      print(count)
       controller = UIImagePickerController()
       
       if let theController = controller{
         theController.sourceType = .Camera
+        
+        let overlayView = UIView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
+        overlayView.backgroundColor = UIColor.redColor()
+        controller?.cameraOverlayView = overlayView
         
         theController.mediaTypes = [kUTTypeImage as String]
         
@@ -118,9 +120,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         theController.delegate = self
         
         presentViewController(theController, animated: true, completion: nil)
-
-        let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("secondVC")
-        self.showViewController(vc as! UIViewController, sender: vc)
         
       }
       
