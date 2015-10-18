@@ -16,7 +16,7 @@ class EnteringViewController: UIViewController {
             "client": "mobile"
         ]
         
-        Alamofire.request(.POST, "https://159.203.98.104:3000/get", parameters: parameters)
+        Alamofire.request(.POST, "http://159.203.98.104:3000/get", parameters: parameters)
             .responseJSON{
                 response in
                 print(response.request)  // original URL request
