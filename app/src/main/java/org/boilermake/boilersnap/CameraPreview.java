@@ -29,7 +29,7 @@ public class CameraPreview extends SurfaceView implements
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         try {
             mCamera.setPreviewDisplay(surfaceHolder);
-            mCamera.setDisplayOrientation(90);
+            //mCamera.setDisplayOrientation(90);
 
             Camera.Parameters params = mCamera.getParameters();
             params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);

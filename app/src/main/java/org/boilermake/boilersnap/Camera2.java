@@ -3,14 +3,17 @@ package org.boilermake.boilersnap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -18,6 +21,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,12 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.http.Body;
-import retrofit.client.Response;
 
 /**
  * Created by rohan on 17/10/15.
@@ -44,7 +42,7 @@ public class Camera2 extends Activity {
     private File picture1;
     private File picture2;
 
-    private final String url = "http://google.com";
+    private final String url = "http://4c576b5e.ngrok.com/send";
 
     /** Called when the activity is first created. */
     @Override
@@ -137,8 +135,11 @@ public class Camera2 extends Activity {
         String pictureTwoString = "";
 
         try {
-            pictureOneString = encodeFileToBase64Binary(picture1);
-            pictureTwoString = encodeFileToBase64Binary(picture2);
+            Bitmap pic1 = rotate90clockwise(picture1);
+            Bitmap pic2 = rotate90clockwise(picture2);
+
+            pictureOneString = encodeBitmapToBase64(pic1);
+            pictureTwoString = encodeBitmapToBase64(pic2);
         } catch (Exception e) {
             Log.e("rip", "rip making the base64 image");
         }
@@ -152,10 +153,10 @@ public class Camera2 extends Activity {
         JSONObject object = new JSONObject();
         try {
 
-            object.put("fromUsername", "lol");
-            object.put("toUsername", "boilermake");
-            object.put("pictureOne", pictureOneString);
-            object.put("pictureTwo", pictureTwoString);
+            object.put("sendFrom", "lol");
+            object.put("sendTo", "boilermake");
+            object.put("image_left", pictureOneString);
+            object.put("image_right", pictureTwoString);
 
         } catch (Exception ex) {
 
@@ -180,36 +181,29 @@ public class Camera2 extends Activity {
         }
     }
 
-    private String encodeFileToBase64Binary(File file) throws IOException {
+    private Bitmap rotate90clockwise(File file) {
+        Bitmap bitmap = null;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        try {
+            bitmap = BitmapFactory.decodeStream(new FileInputStream(file), null, options);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        byte[] bytes = loadFile(file);
-        byte[] encoded = Base64.encodeBase64(bytes);
-        String encodedString = new String(encoded);
-
-        return encodedString;
+        return rotateBitmap(bitmap, 90.0f);
     }
 
-    private static byte[] loadFile(File file) throws IOException {
-        InputStream is = new FileInputStream(file);
+    public static Bitmap rotateBitmap(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
+    }
 
-        long length = file.length();
-        if (length > Integer.MAX_VALUE) {
-            // File is too large
-        }
-        byte[] bytes = new byte[(int)length];
-
-        int offset = 0;
-        int numRead = 0;
-        while (offset < bytes.length
-                && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
-            offset += numRead;
-        }
-
-        if (offset < bytes.length) {
-            throw new IOException("Could not completely read file "+file.getName());
-        }
-
-        is.close();
-        return bytes;
+    public String encodeBitmapToBase64(Bitmap image) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 }

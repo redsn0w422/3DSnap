@@ -2,32 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jar="/Users/rohan/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/pre-dexed/debug/classes-41efdb2c47f75dc5bcdd0baabcca98ea4da778e0.jar" />
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-631764418b0a683719a2e45e906c741dc277d893.jar" />
     </item>
     <item
-        jar="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jar="/Users/rohan/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-43f15093e571cd99b7f57e19528962eda8f214b6.jar" />
-    </item>
-    <item
-        jar="/Users/rohan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-65c115b96e7bd98bde592725da93113cc080fcd7.jar" />
-    </item>
-    <item
-        jar="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/pre-dexed/debug/classes-e30b7f42a7cbefde17db16980c33ca2776fbc4f8.jar" />
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/rohan/Projects/BoilerSnap/app/build/intermediates/pre-dexed/debug/gson-2.3.1-9e7eea6098b63cdc98b11427b07d3f9d0a7efb93.jar" />
     </item>
 
 </items>
