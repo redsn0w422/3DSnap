@@ -132,7 +132,7 @@ clean:
 	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf
 
 install:
-	@3dslink -a 10.186.61.26 3ds.3dsx
+	@3dslink -a 10.186.54.56 3ds.3dsx
 
 
 #---------------------------------------------------------------------------------
