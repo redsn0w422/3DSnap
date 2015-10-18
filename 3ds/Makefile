@@ -31,8 +31,8 @@ BUILD		        :=	build
 SOURCES		      :=	src
 DATA		        :=	data
 INCLUDES	      :=	include
-APP_TITLE       :=  3DSRemote
-APP_DESCRIPTION :=  Remote control for 3DS
+APP_TITLE       :=  3DSnap
+APP_DESCRIPTION :=  Share your 3D images with friends!
 APP_AUTHOR      :=  wchill
 ICON            :=  logo.png
 
