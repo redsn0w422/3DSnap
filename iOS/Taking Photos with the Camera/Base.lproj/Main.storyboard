@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -40,6 +40,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3dsnap_logo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JXh-zU-BBf">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="MoC-0O-duq"/>
+                                    <constraint firstAttribute="height" constant="128" id="wgA-iM-9EY"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,6 +56,8 @@
                             <constraint firstItem="jxY-fW-4ph" firstAttribute="leading" secondItem="m1h-wr-iBD" secondAttribute="leadingMargin" constant="20" id="7MU-Dn-TPU"/>
                             <constraint firstItem="t3T-kD-fKi" firstAttribute="top" secondItem="2E6-cT-Zmj" secondAttribute="bottom" constant="100" id="CGC-KA-mYr"/>
                             <constraint firstItem="jxY-fW-4ph" firstAttribute="top" secondItem="m1h-wr-iBD" secondAttribute="topMargin" constant="79" id="SWg-kk-bgO"/>
+                            <constraint firstItem="JXh-zU-BBf" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="r3P-jS-SbJ"/>
+                            <constraint firstItem="JXh-zU-BBf" firstAttribute="centerY" secondItem="m1h-wr-iBD" secondAttribute="centerY" id="s8q-dR-fYK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jxY-fW-4ph" secondAttribute="trailing" constant="20" id="tWW-qA-V0A"/>
                             <constraint firstItem="jxY-fW-4ph" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="uLN-GZ-9MA"/>
                         </constraints>
@@ -180,4 +189,7 @@
             <point key="canvasLocation" x="618" y="30"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="3dsnap_logo.jpg" width="400" height="240"/>
+    </resources>
 </document>
