@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Entering View Controller-->
+        <scene sceneID="xc7-Qz-raP">
+            <objects>
+                <viewController id="ICK-71-20G" customClass="EnteringViewController" customModule="Taking_Photos_with_the_Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6BR-6K-kBN"/>
+                        <viewControllerLayoutGuide type="bottom" id="t3T-kD-fKi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m1h-wr-iBD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMU-LO-QeY">
+                                <rect key="frame" x="264" y="124" width="72" height="30"/>
+                                <animations/>
+                                <state key="normal" title="View Snap"/>
+                                <connections>
+                                    <action selector="viewSnapButtonClicked:" destination="ICK-71-20G" eventType="touchUpInside" id="883-NY-2S0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-cT-Zmj">
+                                <rect key="frame" x="265" y="470" width="70" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Take snap"/>
+                                <connections>
+                                    <action selector="takeSnapButtonClicked:" destination="ICK-71-20G" eventType="touchUpInside" id="E5b-sX-ofz"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxY-fW-4ph">
+                                <rect key="frame" x="40" y="79" width="520" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2E6-cT-Zmj" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="2J2-1n-cY2"/>
+                            <constraint firstItem="xMU-LO-QeY" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="4Hp-2M-04c"/>
+                            <constraint firstItem="jxY-fW-4ph" firstAttribute="leading" secondItem="m1h-wr-iBD" secondAttribute="leadingMargin" constant="20" id="7MU-Dn-TPU"/>
+                            <constraint firstItem="t3T-kD-fKi" firstAttribute="top" secondItem="2E6-cT-Zmj" secondAttribute="bottom" constant="100" id="CGC-KA-mYr"/>
+                            <constraint firstItem="jxY-fW-4ph" firstAttribute="top" secondItem="m1h-wr-iBD" secondAttribute="topMargin" constant="79" id="SWg-kk-bgO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jxY-fW-4ph" secondAttribute="trailing" constant="20" id="tWW-qA-V0A"/>
+                            <constraint firstItem="jxY-fW-4ph" firstAttribute="centerX" secondItem="m1h-wr-iBD" secondAttribute="centerX" id="uLN-GZ-9MA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="usernameField" destination="jxY-fW-4ph" id="3aZ-LL-8Yh"/>
+                        <segue destination="Ci2-9r-rCN" kind="show" identifier="takeSnap" id="A30-ui-OA8"/>
+                        <segue destination="Yn0-iy-IVp" kind="show" identifier="showImage" id="9ph-0u-cBB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7U-Oh-F6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-448" y="448"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Taking_Photos_with_the_Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1: Take photo of object" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkE-pR-j4z">
+                                <rect key="frame" x="193.5" y="290" width="213.5" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OkE-pR-j4z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PfW-RN-pWd"/>
+                            <constraint firstItem="OkE-pR-j4z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PhO-Oi-IsV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="O7s-2w-Byi"/>
+                    <connections>
+                        <segue destination="jba-lL-a2T" kind="show" identifier="secondVC" id="Ssn-7Q-8vR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1430" y="30"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="mbH-Oo-N33">
+            <objects>
+                <viewController id="xi3-dB-gye" customClass="ImageViewController" customModule="Taking_Photos_with_the_Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lsF-m3-van"/>
+                        <viewControllerLayoutGuide type="bottom" id="GWW-6S-57V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jqj-fC-CTa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uuh-ep-Pp0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rid-Gs-nay"/>
+                    <connections>
+                        <outlet property="theImageView" destination="Uuh-ep-Pp0" id="b1l-9K-lXe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A8f-4c-JBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1430" y="878"/>
+        </scene>
+        <!--Second Picture View Controller-->
+        <scene sceneID="ml5-lz-8pv">
+            <objects>
+                <viewController storyboardIdentifier="secondVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jba-lL-a2T" customClass="SecondPictureViewController" customModule="Taking_Photos_with_the_Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hto-yo-yCm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vbt-bc-u3T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hKX-KC-4gW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2: Move phone slightly to the right and take another image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-Wr-mRn">
+                                <rect key="frame" x="57.5" y="289.5" width="485" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MXe-Wr-mRn" firstAttribute="centerY" secondItem="hKX-KC-4gW" secondAttribute="centerY" id="13Y-UR-R4E"/>
+                            <constraint firstItem="MXe-Wr-mRn" firstAttribute="centerX" secondItem="hKX-KC-4gW" secondAttribute="centerX" id="VmP-KB-tZs"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rSR-m8-5vP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2220" y="30"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kRj-HH-UGC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ci2-9r-rCN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LFh-lz-d2N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="3x7-Vx-C63"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Gf-dS-WvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618" y="30"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Hy-oz-5r7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yn0-iy-IVp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ic6-S2-JUv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xi3-dB-gye" kind="relationship" relationship="rootViewController" id="y0B-zd-w2q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W0d-D4-2lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618" y="878"/>
+        </scene>
+    </scenes>
+</document>
