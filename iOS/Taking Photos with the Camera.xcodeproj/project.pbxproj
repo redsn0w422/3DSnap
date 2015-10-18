@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AF2D7BD8D485795A93F7BEF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E77D3F152701101BBB0480E0 /* Pods.framework */; };
+		84D169351BD3F06700396EB5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D1692C1BD3F05800396EB5 /* Alamofire.framework */; };
+		84D169361BD3F06700396EB5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84D1692C1BD3F05800396EB5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84D1693B1BD3F0FD00396EB5 /* 3dsnap_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84D1693A1BD3F0FD00396EB5 /* 3dsnap_logo.jpg */; settings = {ASSET_TAGS = (); }; };
 		9DA89D76196EDA430055691D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA89D75196EDA430055691D /* AppDelegate.swift */; };
 		9DA89D78196EDA430055691D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA89D77196EDA430055691D /* ViewController.swift */; };
 		9DA89D7B196EDA430055691D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA89D79196EDA430055691D /* Main.storyboard */; };
@@ -21,6 +23,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		84D1692B1BD3F05800396EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		84D1692D1BD3F05800396EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		84D1692F1BD3F05800396EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		84D169311BD3F05800396EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		84D169331BD3F05800396EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		84D169371BD3F06700396EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 		9DA89D83196EDA430055691D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9DA89D68196EDA430055691D /* Project object */;
@@ -30,8 +74,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		84D169391BD3F06700396EB5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84D169361BD3F06700396EB5 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5D17E8D179CFDDEFA960F4BD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		84D1693A1BD3F0FD00396EB5 /* 3dsnap_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3dsnap_logo.jpg; sourceTree = "<group>"; };
 		9DA89D70196EDA430055691D /* Taking Photos with the Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Taking Photos with the Camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DA89D74196EDA430055691D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DA89D75196EDA430055691D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AF2D7BD8D485795A93F7BEF /* Pods.framework in Frameworks */,
+				84D169351BD3F06700396EB5 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +138,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84D169241BD3F05800396EB5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84D1692C1BD3F05800396EB5 /* Alamofire.framework */,
+				84D1692E1BD3F05800396EB5 /* Alamofire.framework */,
+				84D169301BD3F05800396EB5 /* Alamofire.framework */,
+				84D169321BD3F05800396EB5 /* Alamofire iOS Tests.xctest */,
+				84D169341BD3F05800396EB5 /* Alamofire OSX Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9DA89D67196EDA430055691D = {
 			isa = PBXGroup;
 			children = (
+				84D1693A1BD3F0FD00396EB5 /* 3dsnap_logo.jpg */,
+				84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */,
 				9DA89D72196EDA430055691D /* Taking Photos with the Camera */,
 				9DA89D85196EDA430055691D /* Taking Photos with the CameraTests */,
 				9DA89D71196EDA430055691D /* Products */,
@@ -161,10 +235,12 @@
 				9DA89D6E196EDA430055691D /* Resources */,
 				C3F9F150C75A9DF91113832E /* Embed Pods Frameworks */,
 				2ADD7B08090E89ACFFA8B045 /* Copy Pods Resources */,
+				84D169391BD3F06700396EB5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				84D169381BD3F06700396EB5 /* PBXTargetDependency */,
 			);
 			name = "Taking Photos with the Camera";
 			productName = "Taking Photos with the Camera";
@@ -201,7 +277,7 @@
 				TargetAttributes = {
 					9DA89D6F196EDA430055691D = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 4ZQ29WZR36;
+						DevelopmentTeam = K37M6EZV7J;
 					};
 					9DA89D81196EDA430055691D = {
 						CreatedOnToolsVersion = 6.0;
@@ -220,6 +296,12 @@
 			mainGroup = 9DA89D67196EDA430055691D;
 			productRefGroup = 9DA89D71196EDA430055691D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 84D169241BD3F05800396EB5 /* Products */;
+					ProjectRef = 84D169231BD3F05800396EB5 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9DA89D6F196EDA430055691D /* Taking Photos with the Camera */,
@@ -227,6 +309,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		84D1692C1BD3F05800396EB5 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 84D1692B1BD3F05800396EB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84D1692E1BD3F05800396EB5 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 84D1692D1BD3F05800396EB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84D169301BD3F05800396EB5 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 84D1692F1BD3F05800396EB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84D169321BD3F05800396EB5 /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 84D169311BD3F05800396EB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84D169341BD3F05800396EB5 /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 84D169331BD3F05800396EB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9DA89D6E196EDA430055691D /* Resources */ = {
@@ -236,6 +356,7 @@
 				9DA89D7B196EDA430055691D /* Main.storyboard in Resources */,
 				9DA89D7D196EDA430055691D /* Images.xcassets in Resources */,
 				EB29A2261BD35A26007397A2 /* Launch.storyboard in Resources */,
+				84D1693B1BD3F0FD00396EB5 /* 3dsnap_logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +442,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		84D169381BD3F06700396EB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 84D169371BD3F06700396EB5 /* PBXContainerItemProxy */;
+		};
 		9DA89D84196EDA430055691D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9DA89D6F196EDA430055691D /* Taking Photos with the Camera */;
@@ -428,6 +554,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Taking Photos with the Camera/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixolity.ios.cookbook.app;
@@ -444,6 +571,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Taking Photos with the Camera/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixolity.ios.cookbook.app;
