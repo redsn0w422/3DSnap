@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_file
 import requests
 from PIL import Image
 
@@ -33,7 +33,7 @@ def recv(username):
     with open(username + '.bin', 'wb') as f:
         f.write(left_pixels_post)
         f.write(right_pixels_post)
-    app.send_file(username + '.bin')
+    return send_file(username + '.bin')
 
 def download_file(url):
     local_filename = url.split('/')[-1]
