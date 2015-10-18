@@ -3,15 +3,17 @@
 require_once("../src/snapchat.php");
 
 //////////// CONFIG ////////////
-$username       = ""; // Your snapchat username
-$password       = ""; // Your snapchat password
-$gEmail         = ""; // Gmail account
-$gPasswd        = ""; // Gmail account password
-$casperKey      = ""; // Casper API Key
-$casperSecret   = ""; // Casper API Secret
-$debug = false; // Set this to true if you want to see all outgoing requests and responses from server
+$username       = "redsn0w422"; // Your snapchat username
+$password       = "Thisisdumb1"; // Your snapchat password
+$gEmail         = "makeboiler@gmail.com"; // Gmail account
+$gPasswd        = "BoilerMake1"; // Gmail account password
+$casperKey      = "e353a611077d86617e6e5ffbb3a3774f"; // Casper API Key
+$casperSecret   = "de518df5975757cf18143185dbd25cc6"; // Casper API Secret
+$debug = true; // Set this to true if you want to see all outgoing requests and responses from server
 ////////////////////////////////
 
+
+// Thisisdumb1
 
 $imagePath = ""; // URL or local path to a media file (image or video)
 $sendTo = array();
@@ -47,7 +49,7 @@ print_r($friends);
 // $snapchat->getStoriesByUsername("homie", true);
 
 // Send chat message to "username"
-$snapchat->sendMessage("sugar_caine", "hello from Snap-API!");
+// $snapchat->sendMessage("username", "hello from Snap-API!");
 
 $snapchat->closeAppEvent();
 
