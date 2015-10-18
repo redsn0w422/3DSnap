@@ -2,6 +2,8 @@ import UIKit
 import MobileCoreServices
 import Alamofire
 
+var image2string : String = String()
+
 class SecondPictureViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imageView : UIImageView?
@@ -43,28 +45,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                 print("Image = \(theImage)")
                                 var imageData = UIImageJPEGRepresentation(theImage, 0.9)
                                 var base64String = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
+                                image2string = base64String
                                 print(base64String)
-                                
-                                let parameters = [
-                                    "sendFrom": "niraj",
-                                    "sendTo": "yasha",
-                                    "image_left": image1string,
-                                    "image_right": base64String
-                                ]
-                                
-                                Alamofire.request(.POST, "http://159.203.98.104:3000/send", parameters: parameters)
-                                print("Post req sent")
                             }
                         }
                     }
                     
                 }
             }
-            
-            //      picker.dismissViewControllerAnimated(true, completion: nil)
-//            picker.dismissViewControllerAnimated(true) { () -> Void in
-//                self.performSegueWithIdentifier("secondVC", sender: nil)
-//            }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

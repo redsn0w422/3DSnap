@@ -13,6 +13,7 @@
 		9DA89D7B196EDA430055691D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA89D79196EDA430055691D /* Main.storyboard */; };
 		9DA89D7D196EDA430055691D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA89D7C196EDA430055691D /* Images.xcassets */; };
 		9DA89D89196EDA430055691D /* Taking_Photos_with_the_CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA89D88196EDA430055691D /* Taking_Photos_with_the_CameraTests.swift */; };
+		EB29682C1BD3EAE000280902 /* SendSnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB29682B1BD3EAE000280902 /* SendSnapViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EB29A2261BD35A26007397A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB29A2251BD35A26007397A2 /* Launch.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EB2B73D51BD2F88B00B8142F /* SecondPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EB2CB7051BD312C200907E65 /* EnteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2CB7041BD312C200907E65 /* EnteringViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -41,6 +42,7 @@
 		9DA89D87196EDA430055691D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DA89D88196EDA430055691D /* Taking_Photos_with_the_CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taking_Photos_with_the_CameraTests.swift; sourceTree = "<group>"; };
 		E77D3F152701101BBB0480E0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB29682B1BD3EAE000280902 /* SendSnapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendSnapViewController.swift; sourceTree = "<group>"; };
 		EB29A2251BD35A26007397A2 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPictureViewController.swift; sourceTree = "<group>"; };
 		EB2CB7041BD312C200907E65 /* EnteringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnteringViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				9DA89D77196EDA430055691D /* ViewController.swift */,
 				EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */,
 				EB2CB7041BD312C200907E65 /* EnteringViewController.swift */,
+				EB29682B1BD3EAE000280902 /* SendSnapViewController.swift */,
 				EB2E1C7A1BD337E5001C73B2 /* ImageViewController.swift */,
 				9DA89D79196EDA430055691D /* Main.storyboard */,
 				EB29A2251BD35A26007397A2 /* Launch.storyboard */,
@@ -302,6 +305,7 @@
 				9DA89D78196EDA430055691D /* ViewController.swift in Sources */,
 				EB2E1C7B1BD337E5001C73B2 /* ImageViewController.swift in Sources */,
 				EB2CB7051BD312C200907E65 /* EnteringViewController.swift in Sources */,
+				EB29682C1BD3EAE000280902 /* SendSnapViewController.swift in Sources */,
 				9DA89D76196EDA430055691D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

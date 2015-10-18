@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ICK-71-20G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -42,6 +42,7 @@
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3dsnap_logo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JXh-zU-BBf">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="MoC-0O-duq"/>
                                     <constraint firstAttribute="height" constant="128" id="wgA-iM-9EY"/>
@@ -164,10 +165,63 @@
                             <constraint firstItem="MXe-Wr-mRn" firstAttribute="centerX" secondItem="hKX-KC-4gW" secondAttribute="centerX" id="VmP-KB-tZs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="J6H-lx-mlp" kind="show" identifier="sendSnapSegue" id="P74-dH-jjG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSR-m8-5vP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2220" y="30"/>
+        </scene>
+        <!--Send Snap View Controller-->
+        <scene sceneID="18S-yN-rDv">
+            <objects>
+                <viewController id="J6H-lx-mlp" customClass="SendSnapViewController" customModule="Taking_Photos_with_the_Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6nG-ao-Npw"/>
+                        <viewControllerLayoutGuide type="bottom" id="2I3-fW-pvY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wat-Cd-C7Y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Send from" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSi-5D-dPQ">
+                                <rect key="frame" x="252" y="144" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozg-I5-E6r">
+                                <rect key="frame" x="253" y="382" width="79" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Send Snap!"/>
+                                <connections>
+                                    <action selector="sendSnapButtonClicked:" destination="J6H-lx-mlp" eventType="touchUpInside" id="SG2-Uf-xFs"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Send to" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vo-eD-ESA">
+                                <rect key="frame" x="252" y="214" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PSi-5D-dPQ" firstAttribute="centerX" secondItem="wat-Cd-C7Y" secondAttribute="centerX" id="NnA-Cx-ZJc"/>
+                            <constraint firstItem="2I3-fW-pvY" firstAttribute="top" secondItem="Ozg-I5-E6r" secondAttribute="bottom" constant="100" id="Oqq-k2-DY5"/>
+                            <constraint firstItem="2Vo-eD-ESA" firstAttribute="centerX" secondItem="wat-Cd-C7Y" secondAttribute="centerX" id="ohG-ey-cXJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sendFromTextField" destination="PSi-5D-dPQ" id="W6d-F2-wSG"/>
+                        <outlet property="sendToTextField" destination="2Vo-eD-ESA" id="JlC-R9-lk9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOr-vz-qLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2968" y="30"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kRj-HH-UGC">
