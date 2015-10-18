@@ -1,6 +1,8 @@
 import UIKit
 import Alamofire
 
+var urlString : String = String()
+
 class EnteringViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
 
@@ -30,9 +32,8 @@ class EnteringViewController: UIViewController {
                         self.presentViewController(alert, animated: true, completion: nil)
                     }
                     else {
-                        // parse image into UIImage and add to global variable
+                        urlString = JSON["link"] as! String
                         self.performSegueWithIdentifier("showImage", sender: nil)
-                        //populate view
                     }
                 }
         }

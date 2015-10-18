@@ -106,6 +106,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rid-Gs-nay"/>
+                    <connections>
+                        <outlet property="theImageView" destination="Uuh-ep-Pp0" id="b1l-9K-lXe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8f-4c-JBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

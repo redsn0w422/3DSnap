@@ -16,6 +16,7 @@
 		EB2B73D51BD2F88B00B8142F /* SecondPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EB2CB7051BD312C200907E65 /* EnteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2CB7041BD312C200907E65 /* EnteringViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EB2E1C7B1BD337E5001C73B2 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2E1C7A1BD337E5001C73B2 /* ImageViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EB3032B11BD345D900AF8637 /* UIImageView+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3032B01BD345D900AF8637 /* UIImageView+AFNetworking.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPictureViewController.swift; sourceTree = "<group>"; };
 		EB2CB7041BD312C200907E65 /* EnteringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnteringViewController.swift; sourceTree = "<group>"; };
 		EB2E1C7A1BD337E5001C73B2 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		EB3032B01BD345D900AF8637 /* UIImageView+AFNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+AFNetworking.swift"; sourceTree = "<group>"; };
 		F551D94A34971A494C46BF48 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,10 +103,11 @@
 				9DA89D77196EDA430055691D /* ViewController.swift */,
 				EB2B73D41BD2F88B00B8142F /* SecondPictureViewController.swift */,
 				EB2CB7041BD312C200907E65 /* EnteringViewController.swift */,
+				EB3032B01BD345D900AF8637 /* UIImageView+AFNetworking.swift */,
+				EB2E1C7A1BD337E5001C73B2 /* ImageViewController.swift */,
 				9DA89D79196EDA430055691D /* Main.storyboard */,
 				9DA89D7C196EDA430055691D /* Images.xcassets */,
 				9DA89D73196EDA430055691D /* Supporting Files */,
-				EB2E1C7A1BD337E5001C73B2 /* ImageViewController.swift */,
 			);
 			path = "Taking Photos with the Camera";
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				EB2E1C7B1BD337E5001C73B2 /* ImageViewController.swift in Sources */,
 				EB2CB7051BD312C200907E65 /* EnteringViewController.swift in Sources */,
 				9DA89D76196EDA430055691D /* AppDelegate.swift in Sources */,
+				EB3032B11BD345D900AF8637 /* UIImageView+AFNetworking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
