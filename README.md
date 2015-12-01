@@ -1,7 +1,14 @@
-# Boilermake 2015
+# 3DSnap
+3D Snapchats. We wanted to build something cool, something that involved a 3DS. Not your typical hackathon hack, right? 
+*4 webservers.* One in PHP. one in Node.JS. and two more in Flask, because why not. 
+*2 clients.* Mobile and 3DS.
 
-This is the greatest thing you've ever seen.
-## **3D snapchat**.
+### challenges
+ - running custom code on a 3DS
+ - taking pictures with a 3DS and using HTTP POST to transfer it across the web
+ - receiving pictures with a 3DS and rendering them in 3D without giving the user a headache
+ - taking stereoscopic 3D images with a smartphone that only has one camera
+ - rendering such images on a smartphone and crafting a 3D appearance
 
 ### the process:
 1. hack 3DS and do tons of reverse engineering, evil bit hacks and guessing to interface with 3DS hardware
@@ -9,10 +16,11 @@ This is the greatest thing you've ever seen.
 3. render 3D stuff everywhere.
 4. and you have...
 
-# 3DSNAP
+## 3DSnap
 
-_Created with tears and <3._
+_Created with tears and <3. @ [BoilerMake 2015](https://boilermake.org/)_
 - eric ahn (**the** wchill)
-- yasha mostofi
-- niraj pant
-- jeron f. wong 
+- [yasha mostofi](https://github.com/redsn0w422/)
+- [niraj pant](https://github.com/xasos)
+- [rohan mathur](https://github.com/mathur)
+- [jeron f. wong](https://github.com/ThisIsJeron) 
