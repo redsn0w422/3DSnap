@@ -1,7 +1,9 @@
+![3DSnap](https://cdn.rawgit.com/redsn0w422/3DSnap/master/iOS/3dsnap_logo.jpg)
+
 # 3DSnap
-3D Snapchats. We wanted to build something cool, something that involved a 3DS. Not your typical hackathon hack, right? 
-*4 webservers.* One in PHP. one in Node.JS. and two more in Flask, because why not. 
-*2 clients.* Mobile and 3DS.
+3D Snapchats. We wanted to build something cool, something that involved a 3DS. Not your typical hackathon hack, right? <br>
+**4 webservers.** One in PHP. one in Node.JS. and two more in Flask, because why not. <br>
+**2 clients.** Mobile (iOS/Android) and 3DS.
 
 ### challenges
  - running custom code on a 3DS
@@ -16,10 +18,10 @@
 3. render 3D stuff everywhere.
 4. and you have...
 
-## 3DSnap
+# 3DSnap
 
 _Created with tears and <3. @ [BoilerMake 2015](https://boilermake.org/)_
-- eric ahn (**the** wchill)
+- [eric ahn (**the** wchill)](https://github.com/wchill)
 - [yasha mostofi](https://github.com/redsn0w422/)
 - [niraj pant](https://github.com/xasos)
 - [rohan mathur](https://github.com/mathur)
