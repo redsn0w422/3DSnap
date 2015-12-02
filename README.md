@@ -20,7 +20,7 @@
 
 # 3DSnap
 
-_Created with tears and <3. @ [BoilerMake 2015](https://boilermake.org/)_
+_Created with tears and <3 @ [BoilerMake 2015](https://boilermake.org/)._
 - [eric ahn (**the** wchill)](https://github.com/wchill)
 - [yasha mostofi](https://github.com/redsn0w422/)
 - [niraj pant](https://github.com/xasos)
