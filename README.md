@@ -5,7 +5,7 @@
 **4 webservers.** One in PHP. one in Node.JS. and two more in Flask, because why not. <br>
 **2 clients.** Mobile (iOS/Android) and 3DS.
 
-Oh, and Eric wrote a [blog post](intense.io/3dsnap-boilermake-2015.html) about the hack.
+Oh, and Eric wrote a [blog post](http://intense.io/3dsnap-boilermake-2015.html) about the hack.
 
 ### challenges
  - running custom code on a 3DS
