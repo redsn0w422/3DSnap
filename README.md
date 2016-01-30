@@ -5,6 +5,8 @@
 **4 webservers.** One in PHP. one in Node.JS. and two more in Flask, because why not. <br>
 **2 clients.** Mobile (iOS/Android) and 3DS.
 
+Oh, and Eric wrote a [blog post](http://intense.io/3dsnap-boilermake-2015.html) about the hack.
+
 ### challenges
  - running custom code on a 3DS
  - taking pictures with a 3DS and using HTTP POST to transfer it across the web
@@ -26,3 +28,6 @@ _Created with tears and <3 @ [BoilerMake 2015](https://boilermake.org/)._
 - [niraj pant](https://github.com/xasos)
 - [rohan mathur](https://github.com/mathur)
 - [jeron f. wong](https://github.com/ThisIsJeron) 
+
+## License
+[MIT License](LICENSE)
